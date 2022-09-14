@@ -259,13 +259,6 @@ console.log('╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═�
 
 client.once('ready', () => {
     console.log('');
-
-    client.user.setPresence({
-        status: 'available',
-        activity: {
-            name: 'HENTAI',
-            type: 'WATCHING',
-            url: 'https://discord.com/'
         }
     });
 });
@@ -283,4 +276,5 @@ client.on('error', e => {
   console.log(chalk.b.red(e.replace(regToken, 'that was.redacted')));
 });
 
-client.login("PASTE YOUR BOT TOKEN");
+client.login(process.env.DISCORD_TOKEN)
+    .catch((e) => { console.log(`[CLIENT_1] LOGIN ERROR: ${e}`); process.exit(0) })
